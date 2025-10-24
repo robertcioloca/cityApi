@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityApi", "CityApi.Api\City
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityApi.Tests", "CityApi.Tests\CityApi.Tests.csproj", "{B53008B7-98B0-41EA-B5B5-6EAF4509D8EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityApi.Core", "CityApi.Core\CityApi.Core.csproj", "{EE787530-AF5E-4578-90FF-E72FE8FD0DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityApi.Data", "CityApi.Data\CityApi.Data.csproj", "{069CA189-9986-486D-B6F3-58BD15BCFE11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{B53008B7-98B0-41EA-B5B5-6EAF4509D8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B53008B7-98B0-41EA-B5B5-6EAF4509D8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B53008B7-98B0-41EA-B5B5-6EAF4509D8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE787530-AF5E-4578-90FF-E72FE8FD0DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE787530-AF5E-4578-90FF-E72FE8FD0DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE787530-AF5E-4578-90FF-E72FE8FD0DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE787530-AF5E-4578-90FF-E72FE8FD0DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{069CA189-9986-486D-B6F3-58BD15BCFE11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069CA189-9986-486D-B6F3-58BD15BCFE11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069CA189-9986-486D-B6F3-58BD15BCFE11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069CA189-9986-486D-B6F3-58BD15BCFE11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

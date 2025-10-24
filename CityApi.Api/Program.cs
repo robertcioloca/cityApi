@@ -1,9 +1,10 @@
-using CityApi.Contracts;
-using CityApi.MappingProfiles;
-using CityApi.Models;
-using CityApi.Providers;
-using CityApi.Services;
+using CityApi.Core.Contracts;
+using CityApi.Core.MappingProfiles;
+using CityApi.Data;
+using CityApi.Core.Providers;
+using CityApi.Core.Services;
 using Microsoft.EntityFrameworkCore;
+using CityApi.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddAutoMapper(typeof(WeatherProfile));
 
 builder.Services.AddTransient<ICityService, CityService>();
 builder.Services.AddTransient<IHttpProvider, HttpProvider>();
+
+builder.Services.Configure<CityApiCoreSettings>(builder.Configuration.GetSection("APIEndpoints"));
 
 var app = builder.Build();
 

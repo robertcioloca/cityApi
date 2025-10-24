@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using CityApi.Models.Dtos;
-using CityApi.Contracts;
+using CityApi.Core.Contracts;
+using CityApi.Core.Models.Dtos;
 
-namespace CityApi.Controllers
+namespace CityApi.Api.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
@@ -18,16 +18,22 @@ namespace CityApi.Controllers
                 return BadRequest("Please provide a valid city name");
             }
 
-            var results = (await _cityService.GetAsync(name)).ToList();
-            if (results == null || results.Count == 0)
+            try
             {
-                return NotFound();
-            }
+                var results = (await _cityService.GetAsync(name)).ToList();
+                if (results == null || results.Count == 0)
+                {
+                    return NotFound();
+                }
 
-            return results;
+                return results;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<CityDto>> CreateAsync([FromBody] CreateCityDto city)
         {
@@ -36,12 +42,18 @@ namespace CityApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await _cityService.CreateAsync(city);
+            try
+            {
+                var result = await _cityService.CreateAsync(city);
 
-            return CreatedAtAction("Get", new { id = result.Id }, result);
+                return CreatedAtAction("Get", new { id = result.Id }, result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(long id, [FromBody] UpdateCityDto city)
         {
@@ -55,29 +67,43 @@ namespace CityApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var cityToUpdate = await _cityService.GetByIdAsync(id);
-            if (cityToUpdate == null)
+            try
             {
-                return NotFound();
+                var cityToUpdate = await _cityService.GetByIdAsync(id);
+                if (cityToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                await _cityService.UpdateAsync(city, cityToUpdate);
+
+                return NoContent();
             }
-
-            await _cityService.UpdateAsync(city, cityToUpdate);
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(long id)
         {
-            var city = await _cityService.GetByIdAsync(id);
-            if (city == null)
+            try
             {
-                return NotFound();
+                var city = await _cityService.GetByIdAsync(id);
+                if (city == null)
+                {
+                    return NotFound();
+                }
+
+                await _cityService.DeleteAsync(city);
+
+                return NoContent();
             }
-
-            await _cityService.DeleteAsync(city);
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

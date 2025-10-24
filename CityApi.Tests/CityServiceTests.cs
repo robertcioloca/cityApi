@@ -1,9 +1,9 @@
 using AutoMapper;
-using CityApi.Contracts;
-using CityApi.MappingProfiles;
-using CityApi.Models.Dtos;
-using CityApi.Models.Entities;
-using CityApi.Services;
+using CityApi.Core.Contracts;
+using CityApi.Core.MappingProfiles;
+using CityApi.Core.Models.Dtos;
+using CityApi.Core.Models.Entities;
+using CityApi.Core.Services;
 using Moq;
 
 namespace CityApi.Tests;

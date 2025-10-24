@@ -2,6 +2,8 @@ using CityApi.Tests.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
+namespace CityApi.Tests;
+
 public static class DbSetMock
 {
     public static Mock<DbSet<T>> Create<T>(IEnumerable<T> data) where T : class
